@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+
+</head>
+<body>
+
+    <div class="container-fluid pt-1">
+        <div class="row mb-1 mt-1">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"> Tabel Siswa <small class="text-muted">Ini merupakan contoh implementasi  data array</small></h5>
+                        <p class="card-text">ini merupakan tabel  informasi dasar siswa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered" id="table-siswa">
+                    <thead>
+                        <tr>
+                            <th>List Siswa</th>
+                            <th colspan="2">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" class="input-search-siswa"                  
+                                            aria-label="Sizing example imput" placeholder="Pencarian Siswa"
+                                            aria-describedby="InputGroup-sizing-default">
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th scope="col">Nama</th>
+                            <th scope="col">Umur</th>
+                            <th scope="col">Kelas</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    
+</body>
+
+<script>
+    let data_siswa = [
+        {
+            "name"  : "siswa 1",
+            "class" : "1",
+            "age"   : 1
+        },
+        {
+            "name"  : "siswa 1",
+            "class" : "2",
+            "age"   : 2
+        },
+        {
+            "name"  : "siswa 1",
+            "class" : "3",
+            "age"   : 3
+        }
+    ];
+
+    function setTableRow() {
+        for (const siswa of data_siswa) {
+            $("#table-siswa tbody").append(`<tr><td>${siswa.name}</td><td>${siswa.age}</td><td>${siswa.class}</td></tr>`);
+        }
+    };
+
+    setTableRow();
+
+    function find(name) {
+        $("#table-siswa tbody").empty();
+
+        if (name) {
+            const siswa = data_siswa.find(function findName(data){
+                if (data.name == name) {
+                    return data;
+                }
+            })
+
+            if (siswa) {
+                $("#table-siswa tbody").append(`<tr><td>${siswa.name}</td><td>${siswa.age}</td><td>${siswa.class}</td></tr>`);
+            } else {
+                $("#table-siswa tbody").append(`<tr><td colspan="3">Siswa <b>${name}</b> tidak di temukan!</td></tr`);
+            }
+        } else {
+            setTableRow();
+        }
+    }
+
+    $(document).ready(function () {
+        $("input").keyup(function () {
+            const name = $("input").val();
+            find (name);
+        })
+    })
+</script>
+
+<!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+</html>
