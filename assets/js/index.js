@@ -1,7 +1,8 @@
 const portofolioData =  [
     {title : "Proyek 1", description: "Deskrpisi proyek 1."},
     {title : "Proyek 2", description: "Deskripsi proyek 2."},
-    {title : "Proyek 3", description: "Deskripsi proyek 3."}
+    {title : "Proyek 3", description: "Deskripsi proyek 3."},
+    
 ];
 
 const portofolioContainer = document.getElementById("portofolioContainer");
