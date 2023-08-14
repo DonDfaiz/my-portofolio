@@ -50,8 +50,48 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
             </div>
         </div>
     </div>
+
+    <div class="container-fluid pt-1">
+        <div class="row mb-1 mt-1">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Pengelompokan bilangan <small class="text-muted"> kita punya 2 kelompok bilangan</small></h5>
+                        <ul class="card-text">
+                            <li>untuk bilangan genap ada [2,4,6,8,10]</li>
+                            <li>untuk bilangan ganjil ada [1,3,5,7,9]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--Table-->
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-bordered" id="table-bilangan">
+                    <thead>
+                        <tr>
+                            <th>Papan Cek Bilangan</th>
+                            <th>
+                                <div class="input-group">
+                                    <input type="number" class="form-control" id="input-bilangan"
+                                        aria-label="Sizing example input" placeholder="input Bilangan"
+                                        aria-describedby="InputGroup-sizing-default">
+                                </div>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
     
 </body>
+<!-- Jquery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
     let data_siswa = [
@@ -61,12 +101,12 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
             "age"   : 1
         },
         {
-            "name"  : "siswa 1",
+            "name"  : "siswa 2",
             "class" : "2",
             "age"   : 2
         },
         {
-            "name"  : "siswa 1",
+            "name"  : "siswa 3",
             "class" : "3",
             "age"   : 3
         }
@@ -105,11 +145,25 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
             const name = $("input").val();
             find (name);
         })
+
+        $("input#input-bilangan").keyup(function() {
+            const number = $("input#input-bilangan").val();
+            $("#table-bilangan tbody").empty();
+            if (number) {
+                if (genap.includes(parseInt(number))) {
+                    $("#table-bilangan tbody").append(`<tr><td colspan ="2"> <h4><span class"badge bg-success">${number} adalah bilangan genap </span></h4></td></tr>`);
+                } else if (ganjil.includes(parseInt(number))) {
+                    $("#table-bilangan tbody").append(`<tr><td colspan ="2"> <h4><span class"badge bg-info">${number} adalah bilangan ganjil </span></h4></td></tr>`);
+                } else {
+                    $("#table-bilangan tbody").append(`<tr><td colspan ="2"> <h4><span class"badge bg-warning">maaf untuk ${number} tidak termasuk kriteria </span></h4></td></tr>`);
+                }
+            }
+        })
     })
+
+    const genap = [2, 4, 6, 8, 10];
+    const ganjil = [1, 3, 5, 7, 9];
+
 </script>
-
-<!-- Jquery -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 
 </html>
