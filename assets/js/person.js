@@ -8,7 +8,7 @@ class Person {
         this.name = name;
         this.gender = gender;
         // 1. Tambahkan di constructor untuk set value gender 
-        
+
     }
 
     setName (name) {
@@ -24,11 +24,7 @@ class Person {
         // 2. tambahkan argument untuk set title, jika gender L = "Tuan " apabila P = "Nyonya", maka nilai 
             // name nya menjadi contoh, 
             // name = Tuan Jhon
-            if (this.gender === "L") {
-                this.name = `Tuan ${this.name}`
-            } else {
-                this.name = `Tuan ${this.name}`
-            }
+            (this.gender === "L") ? this.name = `Tuan ${this.name}` : this.name = `Nyonya ${this.name}`;
     }
 
     static find(name) {
