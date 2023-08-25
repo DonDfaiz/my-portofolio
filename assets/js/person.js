@@ -29,7 +29,7 @@ class Person {
 
     static find(name) {
         // 6. tambahkan argument untuk pungsi pencarian dari array persons berdasarkan nama.
-        return persons.find((person) => person.name === name);
+        return persons.find((person) => person.name = name);
     } 
 }
 
@@ -38,16 +38,20 @@ class Person {
     // panggil funsi setTittle dari object person 
     // 1 person perempuan
     // panggil funsi setTittle dari object person 
+
+//cara pertama
 let orang1 = new Person("Dewi", "P");
 orang1.setTitle();
 let orang2 = new Person("Dewa", "L");
 orang2.setTitle();
 
+//cara kedua
 const orang3 = new Person();
 orang3.name = "Putri";
 orang3.gender = "P";
 orang3.setTitle();
 
+//cara ketiga
 //builder pattern
 const orang4 = new Person();
 orang4.setName("Putra").setGender("L").setTitle();
@@ -62,3 +66,33 @@ console.log(persons);
 
 // 7. panggil fungsi Person.find(name) dan muncul kan object person berdasarkan nama yang di input.
 console.log(Person.find("Tuan Dewa"));
+
+
+// Latihan OOP
+
+class Student extends Person {
+    setClass(kelas) {
+        //1. argumant set nilai kelas
+        this.kelas = kelas;
+        return this;
+    }
+    
+    // 4. tambahkan method setSekolah
+
+    setSekolah(sekolah) {
+        this.sekolah = sekolah;
+        return this;
+    }
+
+}
+
+// 2. Set class dengan bentuk builder pattern
+const student = new Student();
+student.setName("Ayu")
+.setGender("P")
+.setClass("2")
+.setSekolah("SDN 1 Cirebon")
+.setTitle();
+
+// 3. Tampilkan student
+console.log(student);
